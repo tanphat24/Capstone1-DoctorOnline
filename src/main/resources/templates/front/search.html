@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tra Cứu | Doctor Online</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome-free/css/all.min.css}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/daterangepicker/daterangepicker.css}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}">
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/select2/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bs-stepper/css/bs-stepper.min.css}">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/dropzone/min/dropzone.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/resources/dist/css/adminlte.min.css}">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <div th:replace="fragments/header :: header" />
+
+        <div th:replace="fragments/guest :: sidebar" />
+
+        <div class="content-wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Tra Cứu</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/front/home">Trang Chủ</a></li>
+                                <li class="breadcrumb-item active">Tra Cứu</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form th:action="@{/front/search}" th:object="${searchDTO}" method="post">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <h3 class="card-title">Kiểm tra các triệu chứng của bạn trực tuyến</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="bs-stepper">
+                                        <div class="bs-stepper-header" role="tablist">
+                                            <!-- your steps here -->
+                                            <div class="step" data-target="#intro-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="intro-part" id="intro-part-trigger">
+                                                    <span class="bs-stepper-circle">1</span>
+                                                    <span class="bs-stepper-label">Giới Thiệu Hệ Thống</span>
+                                                </button>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="step" data-target="#term-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="term-part" id="term-part-trigger">
+                                                    <span class="bs-stepper-circle">2</span>
+                                                    <span class="bs-stepper-label">Điều Khoản Dịch Vụ</span>
+                                                </button>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="step" data-target="#symptom-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="symptom-part" id="symptom-part-trigger">
+                                                    <span class="bs-stepper-circle">3</span>
+                                                    <span class="bs-stepper-label">Triệu Chứng Của Bạn</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="bs-stepper-content">
+                                            <!-- your steps content here -->
+                                            <div id="intro-part" class="content" role="tabpanel" aria-labelledby="intro-part-trigger">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h3>Kiểm tra các triệu chứng của bạn</h3>
+                                                        <p>Thực hiện đánh giá triệu chứng ngắn (3 phút). Thông tin bạn cung cấp là an toàn và
+                                                            sẽ không được chia sẻ. Kết quả của bạn sẽ bao gồm:</p>
+                                                        <p>- Nguyên nhân có thể của các triệu chứng.</p>
+                                                        <p>- Khuyến nghị về những việc cần làm tiếp theo.</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img th:src="@{/resources/images/check-your-symptoms.png}" alt="Check your symptoms"
+                                                           width="350px" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-primary" onclick="stepper.next()">Kế Tiếp</a>
+                                            </div>
+                                            <div id="term-part" class="content" role="tabpanel" aria-labelledby="term-part-trigger">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h3>Điều khoản dịch vụ</h3>
+                                                        <p>Trước khi sử dụng kiểm tra, vui lòng đọc Điều khoản dịch vụ và ghi nhớ:</p>
+                                                        <p>- Kiểm tra không phải là một chẩn đoán. Nó chỉ dành cho thông tin của bạn và
+                                                            không phải là ý kiến y tế có trình độ.</p>
+                                                        <p>- Kiểm tra không dành cho trường hợp khẩn cấp. Gọi số khẩn cấp tại địa phương của
+                                                            bạn ngay lập tức khi có trường hợp khẩn cấp về sức khỏe.</p>
+                                                        <p>- Dữ liệu của bạn được an toàn. Thông tin bạn cung cấp sẽ không
+                                                            được chia sẻ hoặc sử dụng để nhận dạng bạn.</p>
+                                                        <p>- Khi bạn nhấn "Kế Tiếp" có nghĩa là bạn đã đồng ý "Tôi đã đọc và
+                                                            chấp nhận Điều khoản dịch vụ."</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <img th:src="@{/resources/images/terms-of-service.png}" alt="Terms of Service"
+                                                             width="350px" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-primary" onclick="stepper.previous()">Quay Lại</a>
+                                                <a class="btn btn-primary" onclick="stepper.next()">Kế Tiếp</a>
+                                            </div>
+                                            <div id="symptom-part" class="content" role="tabpanel" aria-labelledby="symptom-part-trigger">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h3>Thêm các triệu chứng của bạn</h3>
+                                                        <p>Thêm càng nhiều triệu chứng càng tốt để có kết quả chính xác nhất.</p>
+
+                                                        <div class="form-group">
+                                                            <label>Vui lòng thử thêm nhiều hơn một triệu chứng.</label>
+                                                            <select class="duallistbox" multiple="multiple" name="symptomList" th:field="*{symptomList}">
+                                                                <option th:each="item : ${symptomListAll}"
+                                                                        th:value="${item.id}"
+                                                                        th:text="${item.name}"
+                                                                        selected/>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-primary" onclick="stepper.previous()">Quay Lại</a>
+                                                <button type="submit" class="btn btn-primary">Gửi Yêu Cầu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    Thêm càng nhiều triệu chứng càng tốt để có kết quả chính xác nhất!
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div th:replace="fragments/footer :: footer" />
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+    <!-- Bootstrap 4 -->
+    <script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- Select2 -->
+    <script th:src="@{/resources/plugins/select2/js/select2.full.min.js}"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script th:src="@{/resources/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js}"></script>
+    <!-- InputMask -->
+    <script th:src="@{/resources/plugins/moment/moment.min.js}"></script>
+    <script th:src="@{/resources/plugins/inputmask/jquery.inputmask.min.js}"></script>
+    <!-- date-range-picker -->
+    <script th:src="@{/resources/plugins/daterangepicker/daterangepicker.js}"></script>
+    <!-- bootstrap color picker -->
+    <script th:src="@{/resources/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script th:src="@{/resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"></script>
+    <!-- Bootstrap Switch -->
+    <script th:src="@{/resources/plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+    <!-- BS-Stepper -->
+    <script th:src="@{/resources/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+    <!-- dropzonejs -->
+    <script th:src="@{/resources/plugins/dropzone/min/dropzone.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/resources/dist/js/adminlte.min.js}"></script>
+    <!-- Page specific script -->
+    <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
+
+  })
+  // BS-Stepper Init
+  document.addEventListener('DOMContentLoaded', function () {
+    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+  })
+
+  // DropzoneJS Demo Code Start
+  Dropzone.autoDiscover = false
+
+  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+  var previewNode = document.querySelector("#template")
+  previewNode.id = ""
+  var previewTemplate = previewNode.parentNode.innerHTML
+  previewNode.parentNode.removeChild(previewNode)
+
+  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    url: "/target-url", // Set the url
+    thumbnailWidth: 80,
+    thumbnailHeight: 80,
+    parallelUploads: 20,
+    previewTemplate: previewTemplate,
+    autoQueue: false, // Make sure the files aren't queued until manually added
+    previewsContainer: "#previews", // Define the container to display the previews
+    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+  })
+
+  myDropzone.on("addedfile", function(file) {
+    // Hookup the start button
+    file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+  })
+
+  // Update the total progress bar
+  myDropzone.on("totaluploadprogress", function(progress) {
+    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+  })
+
+  myDropzone.on("sending", function(file) {
+    // Show the total progress bar when upload starts
+    document.querySelector("#total-progress").style.opacity = "1"
+    // And disable the start button
+    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+  })
+
+  // Hide the total progress bar when nothing's uploading anymore
+  myDropzone.on("queuecomplete", function(progress) {
+    document.querySelector("#total-progress").style.opacity = "0"
+  })
+
+  // Setup the buttons for all transfers
+  // The "add files" button doesn't need to be setup because the config
+  // `clickable` has already been specified.
+  document.querySelector("#actions .start").onclick = function() {
+    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+  }
+  document.querySelector("#actions .cancel").onclick = function() {
+    myDropzone.removeAllFiles(true)
+  }
+  // DropzoneJS Demo Code End
+</script>
+
+</body>
+
+</html>

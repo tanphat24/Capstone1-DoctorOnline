@@ -1,0 +1,109 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="sidebar">
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+            <img th:src="@{/resources/dist/img/AdminLTELogo.png}" alt="Doctor Online"
+                 class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Doctor Online</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                    <a>Xin chào, [[${#request.remoteUser}]]</a>
+                    <a href="/logout" class="d-block">Đăng Xuất</a>
+                </div>
+            </div>
+
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                           aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item">
+                        <a href="/back/dashboard" th:class="${#httpServletRequest.requestURI.contains('/back/dashboard') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Tổng Quan</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-header">Quản Lý</li>
+                    <li class="nav-item">
+                        <a href="/back/account" th:class="${#httpServletRequest.requestURI.contains('/back/account') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Tài Khoản</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/back/diseases" th:class="${#httpServletRequest.requestURI.contains('/back/diseases') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-viruses"></i>
+                            <p>Loại Bệnh</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/back/symptoms" th:class="${#httpServletRequest.requestURI.contains('/back/symptoms') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-flask"></i>
+                            <p>Triệu Chứng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/back/precautions" th:class="${#httpServletRequest.requestURI.contains('/back/precautions') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-heart"></i>
+                            <p>Phòng Ngừa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/back/comments" th:class="${#httpServletRequest.requestURI.contains('/back/comments') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fa fa-comment"></i>
+                            <p>Bình Luận</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-header">Thống Kê</li>
+                    <li class="nav-item">
+                        <a href="/back/report-history" th:class="${#httpServletRequest.requestURI.contains('/back/reports') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-chart-line"></i>
+                            <p>Bệnh Án</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/back/report-disease" th:class="${#httpServletRequest.requestURI.contains('/back/report-disease') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon far fa-chart-bar"></i>
+                            <p>Loại Bệnh</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-header">Thiết Lập</li>
+                    <li class="nav-item">
+                        <a href="/change-password"
+                           th:class="${#httpServletRequest.requestURI.contains('/change-password') ? 'nav-link active' : 'nav-link'}">
+                            <i class="nav-icon fas fa-unlock-alt"></i>
+                            <p>Đổi Mật Khẩu</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+</div>
+</body>
+
+</html>

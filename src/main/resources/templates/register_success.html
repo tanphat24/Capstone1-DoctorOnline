@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng Ký | Doctor Online</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome-free/css/all.min.css}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/resources/dist/css/adminlte.min.css?v=3.2.0}">
+
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+    <div class="register-logo">
+        <a href="/"><b>Doctor</b> Online</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">ĐĂNG KÝ TÀI KHOẢN</p>
+
+            <p class="mb-1 text-center">
+                Chúc mừng <b th:text="${accountDTO.username}"></b> đã đăng ký tài khoản thành công! Vui lòng nhấn vào đường dẫn bên dưới để đăng nhập.
+            </p>
+            <p class="mb-0 text-center">
+                <a href="/login" class="text-center">Đăng nhập tại đây!</a>
+            </p>
+        </div>
+</div>
+
+<!-- jQuery -->
+<script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/resources/dist/js/adminlte.min.js}"></script>
+
+</body>
+</html>

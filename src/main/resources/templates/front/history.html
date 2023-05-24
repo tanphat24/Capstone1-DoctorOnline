@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lịch Sử | Doctor Online</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome-free/css/all.min.css}">
+    <!-- daterange picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/daterangepicker/daterangepicker.css}">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css}">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+          th:href="@{/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}">
+    <!-- Select2 -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/select2/css/select2.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css}">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/bs-stepper/css/bs-stepper.min.css}">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/dropzone/min/dropzone.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/resources/dist/css/adminlte.min.css}">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/guest :: sidebar"/>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Lịch Sử</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/front/home">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active">Lịch Sử</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The timeline -->
+                        <div class="timeline">
+                            <div class="timeline" th:each="item : ${accountHistoryList}">
+                                <!-- Label -->
+                                <div class="time-label">
+                                    <span class="bg-gradient-cyan" th:text="${item.historyDTO.createdOn}"></span>
+                                </div>
+                                <!-- Label -->
+                                <!-- Item -->
+                                <div>
+                                    <i class="fas fa-user bg-green"></i>
+                                    <div class="timeline-item" th:each="disease : ${item.diseaseDTOList}">
+                                        <h3 class="timeline-header"><a th:href="'/front/article/disease/' + ${disease.diseaseDTO.id}" th:text="${disease.diseaseDTO.name}"></a></h3>
+
+                                        <div class="timeline-body">
+                                            <div th:if="${disease.symptomDTOList.size()} != 0">
+                                                <div class="callout callout-danger" style="padding: 5px; box-shadow: none; color: #007bff">
+                                                    Triệu Chứng
+                                                </div>
+                                                <p  style="margin-left: 20px"
+                                                    th:each="symptom : ${disease.symptomDTOList}"
+                                                    th:text="'- ' + ${symptom.symptomDTO.name}">
+                                                </p>
+                                            </div>
+                                            <div th:if="${disease.precautionDTOList.size()} != 0">
+                                                <div class="callout callout-success" style="padding: 5px; box-shadow: none; color: #007bff">
+                                                     Phòng Ngừa
+                                                </div>
+                                                <p style="margin-left: 20px"
+                                                   th:each="precaution : ${disease.precautionDTOList}"
+                                                   th:text="'- ' + ${precaution.precautionDTO.name}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Item -->
+                            </div>
+                            <div>
+                                <i class="fas fa-clock bg-gray"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+
+        </section>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Select2 -->
+<script th:src="@{/resources/plugins/select2/js/select2.full.min.js}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script th:src="@{/resources/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js}"></script>
+<!-- InputMask -->
+<script th:src="@{/resources/plugins/moment/moment.min.js}"></script>
+<script th:src="@{/resources/plugins/inputmask/jquery.inputmask.min.js}"></script>
+<!-- date-range-picker -->
+<script th:src="@{/resources/plugins/daterangepicker/daterangepicker.js}"></script>
+<!-- bootstrap color picker -->
+<script th:src="@{/resources/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script th:src="@{/resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"></script>
+<!-- Bootstrap Switch -->
+<script th:src="@{/resources/plugins/bootstrap-switch/js/bootstrap-switch.min.js}"></script>
+<!-- BS-Stepper -->
+<script th:src="@{/resources/plugins/bs-stepper/js/bs-stepper.min.js}"></script>
+<!-- dropzonejs -->
+<script th:src="@{/resources/plugins/dropzone/min/dropzone.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/resources/dist/js/adminlte.min.js}"></script>
+<!-- Page specific script -->
+
+</body>
+
+</html>

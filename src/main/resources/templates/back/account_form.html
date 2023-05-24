@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tài Khoản | Doctor Online</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+          th:href="@{/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}">
+    <!-- iCheck -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/jqvmap/jqvmap.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/resources/dist/css/adminlte.min.css}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/daterangepicker/daterangepicker.css}">
+    <!-- summernote -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/summernote/summernote-bs4.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/sidebar :: sidebar"/>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1></h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/back/dashboard">Trang Chủ</a></li>
+                            <li class="breadcrumb-item">Tài Khoản</li>
+                            <li class="breadcrumb-item active">Biểu Mẫu</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Thông Tin Tài Khoản</h3>
+                            </div>
+
+                            <form id="quickForm"
+                                  method="post"
+                                  enctype="multipart/form-data"
+                                  th:action="@{/back/account/form}"
+                                  th:object="${accountDTO}">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="alert alert-dismissible col-md-12"
+                                             th:if="${messageDTO != null && messageDTO.key != ''}"
+                                             th:classappend="${messageDTO.key == 'success' ? 'alert-success' : 'alert-warning'}">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert</h5>
+                                            <span th:text="${messageDTO.value}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputId">Mã Tài Khoản</label>
+                                                <input type="text" name="id" class="form-control"
+                                                       th:classappend="${#fields.hasErrors('id')} ? 'is-invalid' : ''"
+                                                       id="inputId" placeholder="..." th:field="*{id}" readonly disabled>
+                                                <p class="text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputFullName">Họ Và Tên</label>
+                                                <input type="text" name="fullName" class="form-control"
+                                                       th:classappend="${#fields.hasErrors('fullName')} ? 'is-invalid' : ''"
+                                                       id="inputFullName" placeholder="..." th:field="*{fullName}">
+                                                <p class="text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputUsername">Tên Đăng Nhập</label>
+                                                <input type="text" name="username" class="form-control"
+                                                       th:classappend="${#fields.hasErrors('username')} ? 'is-invalid' : ''"
+                                                       id="inputUsername" placeholder="..." th:field="*{username}">
+                                                <p class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputEmail">Địa Chỉ Email</label>
+                                                <input type="text" name="email" class="form-control"
+                                                       th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+                                                       id="inputEmail" placeholder="..." th:field="*{email}">
+                                                <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputPhone">Số Điện Thoại</label>
+                                                <input type="text" name="phone" class="form-control"
+                                                       th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid' : ''"
+                                                       id="inputPhone" placeholder="..." th:field="*{phone}">
+                                                <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputRole">Loại Tài Khoản</label>
+                                                <select class="form-control select2" id="inputRole" style="width: 100%;"
+                                                        th:classappend="${#fields.hasErrors('role')} ? 'is-invalid' : ''"
+                                                        th:field="*{role}">
+                                                    <option th:value="0">Chọn loại tài khoản...</option>
+                                                    <option th:each="item : ${roleListDTO}"
+                                                            th:value="${item.id}"
+                                                            th:text="${item.name}"/>
+                                                </select>
+                                                <p class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputAddress">Địa Chỉ</label>
+                                                <textarea style="height: 210px " type="text"
+                                                          name="address"
+                                                          class="form-control"
+                                                          id="inputAddress"
+                                                          placeholder="..."
+                                                          th:field="*{address}"
+                                                >
+                                                </textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputStatus">Trạng Thái</label>
+                                                <select id="inputStatus" class="form-control select2" style="width: 100%;"
+                                                        th:field="*{status}">
+                                                    <option value="true">Kích Hoạt</option>
+                                                    <option value="false">Tạm Ngưng</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <input type="hidden" name="id" class="form-control" th:field="*{id}">
+                                    <button type="submit" class="btn btn-primary">Lưu Dữ Liệu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"/>
+
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+</div>
+
+<!-- jQuery -->
+<script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{/resources/plugins/jquery-ui/jquery-ui.min.js}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- ChartJS -->
+<script th:src="@{/resources/plugins/chart.js/Chart.min.js}"></script>
+<!-- Sparkline -->
+<script th:src="@{/resources/plugins/sparklines/sparkline.js}"></script>
+<!-- JQVMap -->
+<script th:src="@{/resources/plugins/jqvmap/jquery.vmap.min.js}"></script>
+<script th:src="@{/resources/plugins/jqvmap/maps/jquery.vmap.usa.js}"></script>
+<!-- jQuery Knob Chart -->
+<script th:src="@{/resources/plugins/jquery-knob/jquery.knob.min.js}"></script>
+<!-- daterangepicker -->
+<script th:src="@{/resources/plugins/moment/moment.min.js}"></script>
+<script th:src="@{/resources/plugins/daterangepicker/daterangepicker.js}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script th:src="@{/resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"></script>
+<!-- Summernote -->
+<script th:src="@{/resources/plugins/summernote/summernote-bs4.min.js}"></script>
+<!-- overlayScrollbars -->
+<script th:src="@{/resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/resources/dist/js/adminlte.js}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script th:src="@{/resources/dist/js/pages/dashboard.js}"></script>
+
+</body>
+</html>

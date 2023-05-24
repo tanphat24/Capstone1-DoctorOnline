@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tổng Quan | Doctor Online</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}">
+    <!-- iCheck -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/jqvmap/jqvmap.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/resources/dist/css/adminlte.min.css}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/daterangepicker/daterangepicker.css}">
+    <!-- summernote -->
+    <link rel="stylesheet" th:href="@{/resources/plugins/summernote/summernote-bs4.min.css}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <div th:replace="fragments/header :: header"/>
+
+    <div th:replace="fragments/guest :: sidebar"/>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0" th:text="'Bệnh Lý: ' + ${diseaseDTO.name}">Tổng Quan</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/front/home">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active">Tổng Quan</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3 th:text="${symptomList.size()}"></h3>
+                                <p>Triệu Chứng</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-viruses"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">&ensp;</a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3 th:text="${precautionList.size()}"></h3>
+                                <p>Phòng Ngừa</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">&ensp;</a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3 th:text="${commentList.size()}"></h3>
+                                <p>Bình Luận</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">&ensp;</a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+
+        <section class="content">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-edit"></i>
+                        Thông Tin Bệnh
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 col-sm-3">
+                            <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="true">Tổng Quan</a>
+                                <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false">Triệu Chứng</a>
+                                <a class="nav-link" id="vert-tabs-messages-tab" data-toggle="pill" href="#vert-tabs-messages" role="tab" aria-controls="vert-tabs-messages" aria-selected="false">Phòng Ngừa</a>
+                                <a class="nav-link" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">Bình Luận</a>
+                            </div>
+                        </div>
+                        <div class="col-7 col-sm-9">
+                            <div class="tab-content" id="vert-tabs-tabContent">
+                                <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
+                                    <h3 th:text="${diseaseDTO.name}"></h3>
+                                    <p th:text="${diseaseDTO.description}"></p>
+                                </div>
+                                <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="ion ion-clipboard mr-1"></i>
+                                                Triệu Chứng
+                                            </h3>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <ul class="todo-list" data-widget="todo-list">
+                                                <li th:each="item : ${symptomList}">
+                                                    <span class="text" th:text="${item.name}"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="vert-tabs-messages" role="tabpanel" aria-labelledby="vert-tabs-messages-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="ion ion-clipboard mr-1"></i>
+                                                Phòng Ngừa
+                                            </h3>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <ul class="todo-list" data-widget="todo-list">
+                                                <li th:each="item : ${precautionList}">
+                                                    <span class="text" th:text="${item.name}"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">
+                                                <i class="ion ion-clipboard mr-1"></i>
+                                                Bình Luận
+                                            </h3>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <ul class="todo-list" data-widget="todo-list">
+                                                <li th:each="item : ${commentList}">
+                                                    <span class="text" th:text="${item.content}"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+        </section>
+
+        <!-- Contact us -->
+        <section class="content">
+            <div class="card">
+                <div class="card-body row">
+                    <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                        <div class="">
+                            <h2>Bình Luận</h2>
+                            <p class="lead mb-5">Bạn có thể để lại bình luận tại đây.<br>
+                                Bình luận của bạn sẽ được kiểm duyệt từ Ban Quản Trị trước khi hiển thị công khai.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row mt-3">
+                            <div class="alert alert-dismissible col-md-12"
+                                 th:if="${messageDTO != null && messageDTO.key == 'save'}"
+                                 th:classappend="${status == 'success' ? 'alert-success' : 'alert-warning'}">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> Thông Báo</h5>
+                                <span th:text="${messageDTO.value}"></span>
+                            </div>
+                        </div>
+
+                        <form id="quickForm"
+                              method="post"
+                              th:action="@{/front/article/comment}"
+                              th:object="${commentDTO}">
+                            <div class="form-group">
+                                <label for="inputMessage">Nội Dung</label>
+                                <textarea id="inputMessage" class="form-control" name="content" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="diseaseId" class="form-control" th:field="*{diseaseId}">
+                                <input type="submit" class="btn btn-primary" value="Gửi Bình Luận">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div th:replace="fragments/footer :: footer"/>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/resources/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{/resources/plugins/jquery-ui/jquery-ui.min.js}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/resources/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- ChartJS -->
+<script th:src="@{/resources/plugins/chart.js/Chart.min.js}"></script>
+<!-- Sparkline -->
+<script th:src="@{/resources/plugins/sparklines/sparkline.js}"></script>
+<!-- JQVMap -->
+<script th:src="@{/resources/plugins/jqvmap/jquery.vmap.min.js}"></script>
+<script th:src="@{/resources/plugins/jqvmap/maps/jquery.vmap.usa.js}"></script>
+<!-- jQuery Knob Chart -->
+<script th:src="@{/resources/plugins/jquery-knob/jquery.knob.min.js}"></script>
+<!-- daterangepicker -->
+<script th:src="@{/resources/plugins/moment/moment.min.js}"></script>
+<script th:src="@{/resources/plugins/daterangepicker/daterangepicker.js}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script th:src="@{/resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"></script>
+<!-- Summernote -->
+<script th:src="@{/resources/plugins/summernote/summernote-bs4.min.js}"></script>
+<!-- overlayScrollbars -->
+<script th:src="@{/resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/resources/dist/js/adminlte.js}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script th:src="@{/resources/dist/js/pages/dashboard.js}"></script>
+
+</body>
+</html>
