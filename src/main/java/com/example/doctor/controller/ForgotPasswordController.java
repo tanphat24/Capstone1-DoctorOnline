@@ -70,5 +70,4 @@ public class ForgotPasswordController {
             return "redirect:" + redirectUrl;
         }
     }
-
 }
