@@ -31,7 +31,7 @@ public class PrecautionValidator implements Validator {
             Precaution precaution = precautionService.findByName(precautionDTO.getName());
             if (precaution != null && precaution.getId() != precautionDTO.getId()) {
                 errors.rejectValue("name", "Tên Phương Pháp đã tồn tại!",
-                        "Tên Phương Pháp đã tồn tại!");
+                        "Tên Phương Pháp đã tồn tại!"); 
             }
         }
     }

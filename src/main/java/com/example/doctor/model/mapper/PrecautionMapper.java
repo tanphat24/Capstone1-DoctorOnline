@@ -12,5 +12,4 @@ public interface PrecautionMapper {
     List<PrecautionDTO> toListDTO(List<Precaution> precautions);
 
     Precaution toEntity(PrecautionDTO precautionDTO);
-
 }
