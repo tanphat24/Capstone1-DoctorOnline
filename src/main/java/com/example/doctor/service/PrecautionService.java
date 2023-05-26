@@ -15,5 +15,4 @@ public interface PrecautionService {
     Precaution save(Precaution precaution);
 
     List<Precaution> findPrecautionByIdIn(List<Long> ids);
-
 }
