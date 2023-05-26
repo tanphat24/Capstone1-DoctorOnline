@@ -17,5 +17,4 @@ public interface SymptomService {
     List<Symptom> findByActive();
 
     List<Symptom> findSymptomByIdIn(List<Long> ids);
-
 }

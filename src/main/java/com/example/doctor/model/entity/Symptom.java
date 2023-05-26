@@ -17,5 +17,4 @@ public class Symptom extends BaseEntity implements Serializable {
 
     @Column(name = "status")
     private boolean status;
-
 }

@@ -15,5 +15,4 @@ public interface SymptomRepository extends JpaRepository<Symptom, Long> {
     List<Symptom> findByStatusIsTrue();
 
     List<Symptom> findSymptomByIdIn(List<Long> ids);
-
 }

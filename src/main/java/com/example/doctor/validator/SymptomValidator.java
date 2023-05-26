@@ -27,7 +27,7 @@ public class SymptomValidator implements Validator {
         if (ValidatorUtil.isEmpty(symptomDTO.getName())) {
             errors.rejectValue("name", "Tên Triệu Chứng không được để trống!",
                     "Tên Triệu Chứng không được để trống!");
-        } else {
+        } else { 
             Symptom symptom = symptomService.findByName(symptomDTO.getName());
             if (symptom != null && symptom.getId() != symptomDTO.getId()) {
                 errors.rejectValue("name", "Tên Triệu Chứng đã tồn tại!",
