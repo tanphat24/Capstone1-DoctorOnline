@@ -19,6 +19,7 @@ public class AccountDiseaseValidator implements Validator {
         return AccountDiseaseDTO.class.isAssignableFrom(clazz);
     }
 
+
     @Override
     public void validate(Object target, Errors errors) {
         AccountDiseaseDTO accountDiseaseDTO = (AccountDiseaseDTO) target;
