@@ -69,5 +69,5 @@ public class ForgotPasswordController {
         } catch (Exception ex) {
             return "redirect:" + redirectUrl;
         }
-    }
+    } 
 }
