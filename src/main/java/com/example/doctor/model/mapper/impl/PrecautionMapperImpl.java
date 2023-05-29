@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class PrecautionMapperImpl implements PrecautionMapper {
 
-    @Autowired
+    @Autowired 
     private PrecautionService precautionService;
 
     @Override

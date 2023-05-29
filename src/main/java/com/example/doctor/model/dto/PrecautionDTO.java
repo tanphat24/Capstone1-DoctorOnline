@@ -11,3 +11,4 @@ public class PrecautionDTO {
     private String name;
     private boolean status;
 }
+   
