@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PrecautionMapper {
 
-    PrecautionDTO toDTO(Precaution precaution);
+    PrecautionDTO toDTO(Precaution precaution); 
 
     List<PrecautionDTO> toListDTO(List<Precaution> precautions);
 
