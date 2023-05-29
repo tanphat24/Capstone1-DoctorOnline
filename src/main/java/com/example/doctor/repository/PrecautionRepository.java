@@ -11,5 +11,5 @@ public interface PrecautionRepository extends JpaRepository<Precaution, Long> {
 
     Precaution findByName(String name);
 
-    List<Precaution> findPrecautionByIdIn(List<Long> ids);
+    List<Precaution> findPrecautionByIdIn(List<Long> ids); 
 }
