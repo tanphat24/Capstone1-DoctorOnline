@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/back/symptoms")
+@RequestMapping("/back/symptoms")  
 public class SymptomController {
 
     private static final String REDIRECT_URL = "/back/symptoms/";
