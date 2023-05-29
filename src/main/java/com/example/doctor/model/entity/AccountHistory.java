@@ -22,3 +22,4 @@ public class AccountHistory extends BaseEntity implements Serializable {
     private boolean status;
 
 }
+ 
