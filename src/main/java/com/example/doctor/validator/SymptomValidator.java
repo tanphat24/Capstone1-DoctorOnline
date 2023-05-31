@@ -1,4 +1,4 @@
-package com.example.doctor.validator;
+package com.example.doctor.validator; 
 
 import com.example.doctor.model.dto.SymptomDTO;
 import com.example.doctor.model.entity.Symptom;
