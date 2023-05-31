@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Symptom extends BaseEntity implements Serializable {
 
     @Column(name = "name")
-    private String name;
+    private String name;   
 
     @Column(name = "status")
     private boolean status;
