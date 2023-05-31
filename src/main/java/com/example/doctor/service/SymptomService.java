@@ -7,7 +7,7 @@ import java.util.List;
 public interface SymptomService {
 
     List<Symptom> findAll();
-
+ 
     Symptom findById(long id);
 
     Symptom findByName(String name);
